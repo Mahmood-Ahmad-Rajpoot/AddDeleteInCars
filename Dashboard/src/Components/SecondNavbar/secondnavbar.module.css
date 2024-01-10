@@ -1,0 +1,8 @@
+.span1{
+    color: grey;
+    font-size: 0.8rem ;
+}
+.span1:hover{
+    color: #0293fd;
+    border-bottom: 1px solid #0293fd;
+}
