@@ -1,11 +1,14 @@
- import Navbar from "./Navbar/Navbar";
-import SecondNavbar from "./SecondNavbar/SecondNavbar";
+
+import DateAndTime from "./settings/DateAndTime";
+ import Wrapper from "./wrapperComponent/Wrapper";
  
 const Main = () => {
   return (
-    <div className=" fixed w-full">
-      <Navbar />
-      <SecondNavbar />
+    <div className="   w-full">
+      <Wrapper>
+        <DateAndTime />
+      </Wrapper>
+      
     </div>
   );
 };

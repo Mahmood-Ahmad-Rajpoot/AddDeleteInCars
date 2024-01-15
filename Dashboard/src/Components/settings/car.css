@@ -1,0 +1,25 @@
+:where(.css-dev-only-do-not-override-dkbvqv).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-dkbvqv).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td {
+  font-size: 0.8rem;
+}
+:where(.css-dev-only-do-not-override-dkbvqv).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-dkbvqv).ant-table-wrapper
+  .ant-table-tbody
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-dkbvqv).ant-table-wrapper
+  .ant-table-tbody
+  > tr
+  > td {
+  font-size: 0.8rem;
+
+}

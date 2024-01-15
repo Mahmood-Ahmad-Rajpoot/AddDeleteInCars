@@ -2,7 +2,15 @@
     color: grey;
     font-size: 0.8rem ;
 }
-.span1:hover{
-    color: #0293fd;
-    border-bottom: 1px solid #0293fd;
+.hov1{
+display: none;
+background-color: #117bd8;
+height: 2px;
+width: 50%;
+}
+.span1:hover +  .hov1{
+   display: block;
+    /* color: #0293fd;
+    border-bottom: 1px solid #0293fd; */
+    /* border-bottom-width: 5px; */
 }

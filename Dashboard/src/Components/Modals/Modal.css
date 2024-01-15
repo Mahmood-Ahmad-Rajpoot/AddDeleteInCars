@@ -1,0 +1,8 @@
+:where(.css-dev-only-do-not-override-dkbvqv).ant-modal .ant-modal-footer {
+   text-align: end;
+   background: transparent;
+   margin-top: 0px !important;
+   padding: 0;
+   border-top: none;
+   border-radius: 0;
+}

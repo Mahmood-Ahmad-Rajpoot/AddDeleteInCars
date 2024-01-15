@@ -8,51 +8,86 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import Styles from "./secondnavbar.module.css";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setHeader } from "../../features/headerSlice";
 const SecondNavbar = () => {
+  const dispatch = useDispatch();
+  const {headerName} = useSelector((store:any)=>store.headerSlice)
   const linkStyles = ({ isActive }: any) => {
     return {
       textDecoration: "none",
       color: isActive ? " #117bd8" : "grey",
-      borderBottom: isActive ? "2px solid #117bd8" : "",
+      
     };
   };
   return (
     <>
-      <div className="w-full h-[50px] items-center border-b px-8 flex justify-between gap-3 list-none">
-        <NavLink className={`${Styles.span1} flex gap-1`} style={linkStyles} to={"/"}>
-           
-            <AddCircleOutlineIcon /> <li className={Styles.li1}>Add Company</li>
+      <div className="w-full h-[50px] bg-white items-center border-b px-[50px] flex justify-between   list-none">
+        <NavLink onClick={()=>dispatch(setHeader('AddCompany'))}
+          className={`${Styles.span1}   flex flex-col items-center gap-1`}
+          style={linkStyles}
+          to={"/"}
+        >
+          <span className="flex gap-1 items-center hover:text-[#117bd8]">
+            <AddCircleOutlineIcon className="!w-[1.2rem]" />{" "}
+            <li className={Styles.li1}>Company Logo</li>
+          </span>
+          <div className={Styles.hov1}></div>
+        </NavLink>
+        <NavLink onClick={()=>dispatch(setHeader('VerifyPhone'))}
+          className={`${Styles.span1} flex gap-1`}
+          style={linkStyles}
+          to={"/VerifyPhone"}
+        >
           
-        </NavLink>
-        <NavLink className={`${Styles.span1} flex gap-1`} style={linkStyles} to={"/CompanyLogo"}>
-          {" "}
-        
-            <MobileFriendlyIcon /> <li className={Styles.li1}>Verify Phone</li>
-        
-        </NavLink>
-        <NavLink className=" " style={linkStyles} to={"/Cars"}>
-          {" "}
-          <span className={`${Styles.span1} flex gap-1`}>
-            <LocalShippingIcon /> <li className={Styles.li1}>Dispatch</li>
+          <span className="flex gap-1 items-center hover:text-[#117bd8]">
+            <MobileFriendlyIcon className="!w-[1.2rem]" /> 
+            <li className={Styles.li1}>Verify Phone</li>
           </span>
         </NavLink>
-        <NavLink className=" " style={linkStyles} to={"/Cars"}>
+        <NavLink onClick={()=>dispatch(setHeader('Dispatch'))}
+          className={`${Styles.span1} flex gap-1`}
+          style={linkStyles}
+          to={"/Dispatch"}
+        >
           {" "}
-          <span className={`${Styles.span1} flex gap-1`}>
-            <CalendarMonthIcon /> <li className={Styles.li1}>Calender</li>
+          <span className="flex items-center gap-1 hover:text-[#117bd8]">
+            <LocalShippingIcon className="!w-[1.2rem]" /> 
+            <li className={Styles.li1}>Dispatch</li>{" "}
           </span>
         </NavLink>
-        <NavLink className=" " style={linkStyles} to={"/Cars"}>
+        <NavLink onClick={()=>dispatch(setHeader('Calender'))}
+          className={`${Styles.span1} flex gap-1`}
+          style={linkStyles}
+          to={"/Calender"}
+        >
           {" "}
-          <span className={`${Styles.span1} flex gap-1`}>
-            <SummarizeIcon /> <li className={Styles.li1}>Reports</li>
+          <span className="flex items-center gap-1 hover:text-[#117bd8]">
+            <CalendarMonthIcon className="!w-[1.2rem]" />{" "}
+            <li className={Styles.li1}>Calender</li>
+          </span>
+        </NavLink>
+        <NavLink onClick={()=>dispatch(setHeader('Reports'))}
+          className={`${Styles.span1} flex gap-1`}
+          style={linkStyles}
+          to={"/Reports"}
+        >
+          {" "}
+          <span className="flex gap-1 items-center hover:text-[#117bd8]">
+            <SummarizeIcon className="!w-[1.2rem]" />{" "}
+            <li className={Styles.li1}>Reports</li>
             <select></select>
           </span>
         </NavLink>
-        <NavLink className=" " style={linkStyles} to={"/Cars"}>
+        <NavLink onClick={()=>dispatch(setHeader('Settings'))}
+          className={`${Styles.span1} flex gap-1`}
+          style={linkStyles}
+          to={"/Settings"}
+        >
           {" "}
-          <span className={`${Styles.span1} flex gap-1`}>
-            <SettingsIcon /> <li className={Styles.li1}>Settings</li>
+          <span className={`flex gap-1 items-center ${headerName==='Settings'&& 'text-[#117bd8]'} hover:text-[#117bd8]`}>
+            <SettingsIcon className="!w-[1.2rem]" />{" "}
+            <li className={Styles.li1}>Settings</li>
           </span>
         </NavLink>
       </div>

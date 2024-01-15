@@ -8,7 +8,7 @@ const { Search } = Input;
 
 const Navbar = () => {
   return (
-    <div className="w-full border h-auto    flex justify-between items-center py-3">
+    <div className="w-full border h-auto px-5 bg-white flex justify-between items-center py-3">
       <div className="flex flex-col items-center ">
         <img src={vite} />
         WorldLimoZin
