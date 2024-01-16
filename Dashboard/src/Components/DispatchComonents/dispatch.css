@@ -1,12 +1,26 @@
-.accepted{
-    background-color: #d49416;
+.accepted {
+  background-color: #d49416;
 }
-.farmOutAccepted{
-    background-color: #23a83c;
+.farmOutAccepted {
+  background-color: #23a83c;
 }
-.clearAtDestination{
-    background-color: #375faa;
+.clearAtDestination {
+  background-color: #375faa;
 }
-.pending{
-    background-color: #b72b2b;
+.pending {
+  background-color: #b72b2b;
+}
+.dispatched {
+  background-color: #aba83b;
+}
+.custInCar {
+  background-color: #36b631;
+}
+.assignName {
+  background-color: #d54242;
+}
+:where(.css-dev-only-do-not-override-dkbvqv).ant-select .ant-select-arrow {
+    border-left: 1px solid rgb(175, 175, 175);
+    padding-left: 5px;
+    margin-left: 15px;
 }

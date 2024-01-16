@@ -1,4 +1,3 @@
- 
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import { Button } from "antd";
@@ -52,8 +51,9 @@ export const carTableHeader: any = [
     title: "Car Image",
     // dataIndex: "car_image",
     width: "11%",
-    render: (record: any) => (
+    render: (record: any, index: number) => (
       <img
+        key={index}
         // src={record.car_image}
         src={record.car_image}
         alt={record.car_type} // Add alt attribute for accessibility
@@ -65,11 +65,10 @@ export const carTableHeader: any = [
     title: "Actions",
     // dataIndex: "car_image",
     width: "11%",
-    render: (record: any) => {
+    render: (record: any, index: number) => {
       const dispatch = useDispatch();
-
       return (
-        <div className="flex  ">
+        <div key={index} className="flex  ">
           <Button type="link" onClick={() => dispatch(setDeleteModal(record))}>
             <DeleteOutlineIcon className="text-red-500  " />
           </Button>

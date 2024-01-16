@@ -1,30 +1,67 @@
-import React from "react";
 import { Button, Table } from "antd";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { dispatchColumns } from "../../VariablesAndData/dispatchData";
 import "./dispatch.css";
+import DateRangeFilter from "./DateRangeFilter";
+import CompanyFilter from "./CompanyFilter";
+import { useState } from "react";
+import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
+  import {resetDispatch } from '../../features/dispatchSlice'
+interface objectType {
+  year: number;
+  month: number;
+  day: number;
+}
+
 const DispatchTable = () => {
   const { dispatchData } = useSelector((store: any) => store.dispatchSlice);
-  const getRowClassName = (record: any, index: number) => {
-    console.log(index, ":", record);
-    console.log(index, ":status:", record.status);
-    console.log(index, ":accepted-code:", record.accepted);
-    // {status:'pending', accepted:0}
-    // {status:'accepted', accepted:1}
-    // {status:'clear at destination', accepted:6}
-    // {status:'farmout accepted', accepted:8}
-    return record.status == "Pending"
+  const [tableData, setTableData] = useState(dispatchData)
+   
+  
+ const dispatch = useDispatch();
+// clear filters
+const clearAllFilters =()=>{
+   
+ dispatch(resetDispatch())
+}
+  // filter based on input company name 
+  
+
+// filter based on the date range
+
+
+  // status 
+  const getRowClassName = (record: any) => {
+    return record.accepted === 0
       ? "pending"
       : record.accepted === 1
       ? "accepted"
+      : record.accepted === 4
+      ? "dispatched"
+      : record.accepted === 5
+      ? "custInCar"
       : record.accepted === 6
       ? "clearAtDestination"
-      : record.status == "Farmout Accepted"
+      : record.accepted === 7
+      ? "assignName"
+      : record.accepted === 8
       ? "farmOutAccepted"
       : "";
   };
+  // normal and hourly
   return (
     <div>
+      <div className="flex flex-col ">
+        <h1 className="text-[2rem] text-black font-semibold mb-5">Dispatch</h1>
+        <h1 className="mb-2 text-black text-[1rem]">Pick Date Range</h1>
+        <div className="flex w-full gap-3 mb-3">
+          <DateRangeFilter     />
+          {/* <DateRangeFilter /> */}
+          <CompanyFilter   />
+          <Button className="self-end border-blue-600 text-blue-600" onClick={clearAllFilters}><FilterAltOffIcon />Remove Filters</Button>
+        </div>
+      </div>
+
       <Table
         pagination={{}}
         rowClassName={getRowClassName}
