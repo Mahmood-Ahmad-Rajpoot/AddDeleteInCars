@@ -1,6 +1,6 @@
 import DriverDropDown from "../Components/DispatchComonents/DriverDropDown";
 import StatusDropDown from "../Components/DispatchComonents/StatusDropDown";
- 
+
 export const dispatchColumns: any = [
   {
     title: "Date",
@@ -16,13 +16,15 @@ export const dispatchColumns: any = [
   },
   {
     title: "Reservation",
-    render: (record: any, index: number) => { 
-     return <StatusDropDown
-        key={index}
-        recordID={record.confirmation_no}
-        label={record.status}
-      />
-      },
+    render: (record: any, index: number) => {
+      return (
+        <StatusDropDown
+          key={index}
+          recordID={record.confirmation_no}
+         
+        />
+      );
+    },
     width: "17%",
     editable: true,
   },
@@ -76,11 +78,9 @@ export const dispatchColumns: any = [
   },
   {
     title: "Driver",
-    dataIndex: " ",
-    render: (record: any, index: number) => {
-      // const [status, setStatus] = useState()
 
-      return <DriverDropDown key={index} />;
+    render: (record: any, index: number) => {
+      return <DriverDropDown key={index} recordID={record.confirmation_no} />;
     },
 
     width: "20%",

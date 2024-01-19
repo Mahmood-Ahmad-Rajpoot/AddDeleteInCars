@@ -3,7 +3,8 @@ interface StateTypes {
   dispatchData: any[];
   completeData: any[];
   reset:boolean;
-}
+  dateFilter:boolean
+ }
 const initialState: StateTypes = {
   dispatchData: [
     {
@@ -4846,7 +4847,8 @@ const initialState: StateTypes = {
   ],
   completeData:[],
   reset:false,
-};
+  dateFilter:false,
+ };
 
 
 const dispatchSlice = createSlice({
@@ -4861,20 +4863,25 @@ const dispatchSlice = createSlice({
      resetDispatch:(state)=>{
       state.dispatchData = state.completeData;
     state.reset =true;
+    state.dateFilter = false;
 
      },
 
     dispatchCompanyFilter: (state, action) => {
     state.reset =false;
+    let applyFilter:any[]=[]
+    if(state.dateFilter) applyFilter = state.dispatchData;
+    else  applyFilter = state.completeData;
 
-      console.log(action.payload)
-      const filteredData = state.dispatchData.filter(
+       const filteredData = applyFilter.filter(
         (d: any) => d.company_name === action.payload)
   
       state.dispatchData = filteredData;
      },
+
      dispatchDateRangeFilter:(state, action)=>{
     state.reset =false;
+    state.dateFilter = true;
 
       const {start:startDate, end:endDate} = action.payload
 
@@ -4928,8 +4935,19 @@ const dispatchSlice = createSlice({
         }
       });
     },
+    dispatchDriverAssign:(state, action)=>{
+      state.dispatchData.map((data, index) => {
+        // console.log(data)
+        if (data.confirmation_no === action.payload) {
+          console.log('logggging')
+          data.status = 'Dispatched';
+          data.accepted = 3;
+          // state.driverAssign = !state.driverAssign;
+        }
+      })
+     },
   },
 });
 
 export default dispatchSlice.reducer;
-export const { dispatchChangeStatus, setDispatchBackUp,resetDispatch, dispatchCompanyFilter, dispatchDateRangeFilter } = dispatchSlice.actions;
+export const { dispatchChangeStatus, dispatchDriverAssign, setDispatchBackUp,resetDispatch, dispatchCompanyFilter, dispatchDateRangeFilter } = dispatchSlice.actions;

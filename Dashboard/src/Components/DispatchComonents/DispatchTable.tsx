@@ -36,7 +36,7 @@ const clearAllFilters =()=>{
       ? "pending"
       : record.accepted === 1
       ? "accepted"
-      : record.accepted === 4
+      : record.accepted === 3
       ? "dispatched"
       : record.accepted === 5
       ? "custInCar"
@@ -64,6 +64,7 @@ const clearAllFilters =()=>{
 
       <Table
         pagination={{}}
+        bordered={false}
         rowClassName={getRowClassName}
         columns={dispatchColumns}
         dataSource={dispatchData}

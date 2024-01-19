@@ -1,9 +1,17 @@
 import React from 'react'
 import { Select } from 'antd';
-const DriverDropDown = () => {
+import { useDispatch } from 'react-redux';
+import { dispatchDriverAssign } from '../../features/dispatchSlice';
+
+interface DriverDropDownProps{
+  recordID:number,
+
+}
+const DriverDropDown:React.FC<DriverDropDownProps> = ({recordID} ) => {
+  const dispatch  = useDispatch();
     const handleChange = (value: { value: string; label: React.ReactNode }) => {
-        console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
-      };
+      dispatch(dispatchDriverAssign(recordID))
+       };
   return (
     <Select
     labelInValue

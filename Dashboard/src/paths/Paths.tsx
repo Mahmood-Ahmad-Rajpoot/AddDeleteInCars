@@ -11,6 +11,9 @@ import Dispatch from "../Pages/Dispatch";
 import Reports from "../Pages/Reports";
 import DateAndTime from "../Components/settings/DateAndTime";
 import Cars from "../Components/settings/Cars";
+ import LocalReservation from "../Components/Reservation/LocalReservation";
+import HourlyReservationPage from "../Pages/HourlyReservationPage";
+import LocalReservationPage from "../Pages/LocalReservationPage";
 
 const Paths = () => {
   return (
@@ -27,6 +30,8 @@ const Paths = () => {
         <Route path="Settings" element={<Settings />} ></Route>
         <Route path="DateTime" element={<DateAndTime />} />
         <Route path="Cars" element={<CarsPage />} />
+        <Route path="LocalReservation" element={<LocalReservationPage />} />
+        <Route path="HourlyReservation" element={<HourlyReservationPage />} />
       </Routes>
     </BrowserRouter>
   );
