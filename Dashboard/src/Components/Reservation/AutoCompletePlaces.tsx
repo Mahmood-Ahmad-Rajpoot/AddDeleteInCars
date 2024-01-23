@@ -1,70 +1,65 @@
 /* global google */
-import React, { useEffect, useRef, useState } from "react";
-
-import "./Styles.css";
+import   { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setLocations } from "../../features/locationSlice";
 import { Button } from "antd";
-interface dataType {
-  lat: number;
-  lng: number;
-}
-interface AutoCompleteProps {
-  setPickUpLocation: (data: any) => void;
-  setDropOffLocation: (data: any) => void;
-}
-const AutoCompletePlaces: React.FC<AutoCompleteProps> = ({
-  setPickUpLocation,
-  setDropOffLocation,
-}) => {
-   const pickUpInputRef = useRef<any>();
-  const dropOffInputRef = useRef<any>();
-const [start, setStart] = useState({ lat:0, lng:0 }) ; 
-const [end, setEnd] = useState({ lat:0, lng:0 })  ;
-console.log('start:end::',start, end);
 
-// const [start]
-useEffect(() => {
-  
-  const options = {
-    fields: ["address_components", "geometry", "icon", "name"],
-    types: ["geocode", "establishment"],
-  };
-  const pickUpAutoComplete = new window.google.maps.places.Autocomplete(
-    pickUpInputRef.current,
-    options
-    );
  
-console.log('run once?');
-  pickUpAutoComplete.addListener("place_changed", async () => {
-    const place = await pickUpAutoComplete.getPlace();
-    if (place.geometry && place.geometry.location) {
-      const lat = place.geometry.location.lat();
-      const lng = place.geometry.location.lng();
-      if (!isNaN(lat) && !isNaN(lng)) {
-        setStart({ lat:lat, lng:lng });
-      } else {
-        console.error("Invalid coordinates");
-      }
-    }
-  });
-  
-   const dropOffAutoComplete = new window.google.maps.places.Autocomplete(
-    dropOffInputRef.current,
-    options
-  );
 
-  dropOffAutoComplete.addListener("place_changed", async () => {
-    const place = await dropOffAutoComplete.getPlace();
-    if (place.geometry && place.geometry.location) {
-      const lat = place.geometry.location.lat();
-      const lng = place.geometry.location.lng();
-      if (!isNaN(lat) && !isNaN(lng)) {
-        setEnd({ lat:lat, lng:lng });
-      } else {
-        console.error("Invalid coordinates");
-      }
+const AutoCompletePlaces = () => {
+  const dispatch = useDispatch();
+  const pickUpInputRef = useRef<any>();
+  const dropOffInputRef = useRef<any>();
+  const [start, setStart] = useState({});
+  const [end, setEnd] = useState({});
+ 
+  useEffect(() => {
+    const options = {
+      fields: ["address_components", "geometry", "icon", "name"],
+      types: ["geocode", "establishment"],
+    };
+
+    // Check if Google Maps API is available
+    if (window.google && window.google.maps) {
+       const pickUpAutoComplete = new window.google.maps.places.Autocomplete(
+        pickUpInputRef.current,
+        options
+      );
+
+      pickUpAutoComplete.addListener("place_changed", async () => {
+        const place = await pickUpAutoComplete.getPlace();
+        if (place.geometry && place.geometry.location) {
+          const lat = place.geometry.location.lat();
+          const lng = place.geometry.location.lng();
+          if (!isNaN(lat) && !isNaN(lng)) {
+            setStart({ lat: lat, lng: lng });
+          } else {
+            console.error("Invalid coordinates");
+          }
+        }
+      });
+
+      const dropOffAutoComplete = new window.google.maps.places.Autocomplete(
+        dropOffInputRef.current,
+        options
+      );
+
+      dropOffAutoComplete.addListener("place_changed", async () => {
+        const place = await dropOffAutoComplete.getPlace();
+        if (place.geometry && place.geometry.location) {
+          const lat = place.geometry.location.lat();
+          const lng = place.geometry.location.lng();
+          if (!isNaN(lat) && !isNaN(lng)) {
+            setEnd({ lat: lat, lng: lng });
+          } else {
+            console.error("Invalid coordinates");
+          }
+        }
+      });
+    } else {
+      console.error("Google Maps API not available.logged");
     }
-  });
-}, [start, end]);
+  }, []);
 
   return (
     <div className="w-full">
@@ -80,10 +75,14 @@ console.log('run once?');
         placeholder="Enter DropOff Location"
         ref={dropOffInputRef}
       />
-      <Button className="bg-blue-600 text-white w-full" onClick={()=>{
-        setPickUpLocation(start)
-        setDropOffLocation(end)
-      }}>Start Journey</Button>
+      <Button
+        className="bg-blue-600 text-white w-full"
+        onClick={() => {
+          dispatch(setLocations({ start: start, end: end }));
+        }}
+      >
+        Start Journey
+      </Button>
     </div>
   );
 };
