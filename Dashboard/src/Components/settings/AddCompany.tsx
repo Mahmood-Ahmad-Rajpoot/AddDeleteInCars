@@ -1,7 +1,7 @@
  
 import Wrapper from '../wrapperComponent/Wrapper'
 import Cars from './Cars'
-import SideNavbar from './SideNavbar'
+ 
 
 const AddCompany = () => {
   return (

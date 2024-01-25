@@ -9,7 +9,7 @@ interface DriverDropDownProps{
 }
 const DriverDropDown:React.FC<DriverDropDownProps> = ({recordID} ) => {
   const dispatch  = useDispatch();
-    const handleChange = (value: { value: string; label: React.ReactNode }) => {
+    const handleChange = ( ) => {
       dispatch(dispatchDriverAssign(recordID))
        };
   return (

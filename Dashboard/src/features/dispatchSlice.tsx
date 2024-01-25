@@ -4912,7 +4912,7 @@ const dispatchSlice = createSlice({
 
       console.log(recordID,)
       console.log("status:", status);
-      state.dispatchData.map((data, index) => {
+      state.dispatchData.map((data) => {
         if (data.confirmation_no === recordID) {
           if (status.toLowerCase() === "farmout_accepted") {
             data.accepted = 8;
@@ -4936,11 +4936,10 @@ const dispatchSlice = createSlice({
       });
     },
     dispatchDriverAssign:(state, action)=>{
-      state.dispatchData.map((data, index) => {
+      state.dispatchData.map((data:any) => {
         // console.log(data)
         if (data.confirmation_no === action.payload) {
-          console.log('logggging')
-          data.status = 'Dispatched';
+          
           data.accepted = 3;
           // state.driverAssign = !state.driverAssign;
         }
@@ -4950,4 +4949,6 @@ const dispatchSlice = createSlice({
 });
 
 export default dispatchSlice.reducer;
-export const { dispatchChangeStatus, dispatchDriverAssign, setDispatchBackUp,resetDispatch, dispatchCompanyFilter, dispatchDateRangeFilter } = dispatchSlice.actions;
+export const { dispatchChangeStatus, dispatchDriverAssign,
+   setDispatchBackUp,resetDispatch, dispatchCompanyFilter,
+    dispatchDateRangeFilter } = dispatchSlice.actions;

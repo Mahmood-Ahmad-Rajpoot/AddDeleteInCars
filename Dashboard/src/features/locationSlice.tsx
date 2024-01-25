@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   startLocation: {},
   endLocation: {},
-};
+ };
 const locationSlice = createSlice({
   name: "modals",
   initialState,
@@ -13,9 +13,16 @@ const locationSlice = createSlice({
       const { start, end } = action.payload;
       state.startLocation = start;
       state.endLocation = end;
-    },
+     },
   },
 });
 
 export default locationSlice.reducer;
 export const { setLocations } = locationSlice.actions;
+/*
+umar hayat
+kashif
+younis
+mazhar 
+m hassan
+Ali Raza*/

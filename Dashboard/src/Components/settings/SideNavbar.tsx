@@ -1,6 +1,5 @@
 // import MobileFriendlyIcon from "@mui/icons-material/MobileFriendly";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-// import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+ // import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SummarizeIcon from "@mui/icons-material/Summarize";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -8,7 +7,7 @@ import Styles from "./addcompany.module.css";
 import PersonIcon from '@mui/icons-material/Person';
 
 // import { Outlet } from "react-router";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink,   } from "react-router-dom";
 import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 const SideNavbar = () => {
     const linkStyles = ({ isActive }: any) => {

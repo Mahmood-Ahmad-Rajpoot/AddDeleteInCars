@@ -4,19 +4,12 @@ import { dispatchColumns } from "../../VariablesAndData/dispatchData";
 import "./dispatch.css";
 import DateRangeFilter from "./DateRangeFilter";
 import CompanyFilter from "./CompanyFilter";
-import { useState } from "react";
-import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
+ import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
   import {resetDispatch } from '../../features/dispatchSlice'
-interface objectType {
-  year: number;
-  month: number;
-  day: number;
-}
-
+ 
 const DispatchTable = () => {
   const { dispatchData } = useSelector((store: any) => store.dispatchSlice);
-  const [tableData, setTableData] = useState(dispatchData)
-   
+    
   
  const dispatch = useDispatch();
 // clear filters

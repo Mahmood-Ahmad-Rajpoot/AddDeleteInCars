@@ -1,18 +1,22 @@
 /* global google */
-import   { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { setLocations } from "../../features/locationSlice";
-import { Button } from "antd";
+import { useEffect, useRef } from "react";
 
- 
+//  interface
+interface AutocompleteProps {
+  setDestination: (location: string) => void;
+  setOrigin: (location: string) => void;
+}
 
-const AutoCompletePlaces = () => {
-  const dispatch = useDispatch();
+// component
+const AutoCompletePlaces: React.FC<AutocompleteProps> = ({
+  setDestination,
+  setOrigin,
+}) => {
+  // hooks
   const pickUpInputRef = useRef<any>();
   const dropOffInputRef = useRef<any>();
-  const [start, setStart] = useState({});
-  const [end, setEnd] = useState({});
- 
+
+  // useEffect
   useEffect(() => {
     const options = {
       fields: ["address_components", "geometry", "icon", "name"],
@@ -21,68 +25,42 @@ const AutoCompletePlaces = () => {
 
     // Check if Google Maps API is available
     if (window.google && window.google.maps) {
-       const pickUpAutoComplete = new window.google.maps.places.Autocomplete(
+      // pick up location getter
+      new window.google.maps.places.Autocomplete(
         pickUpInputRef.current,
         options
       );
 
-      pickUpAutoComplete.addListener("place_changed", async () => {
-        const place = await pickUpAutoComplete.getPlace();
-        if (place.geometry && place.geometry.location) {
-          const lat = place.geometry.location.lat();
-          const lng = place.geometry.location.lng();
-          if (!isNaN(lat) && !isNaN(lng)) {
-            setStart({ lat: lat, lng: lng });
-          } else {
-            console.error("Invalid coordinates");
-          }
-        }
-      });
-
-      const dropOffAutoComplete = new window.google.maps.places.Autocomplete(
+      // dropOff location getter
+      new window.google.maps.places.Autocomplete(
         dropOffInputRef.current,
         options
       );
-
-      dropOffAutoComplete.addListener("place_changed", async () => {
-        const place = await dropOffAutoComplete.getPlace();
-        if (place.geometry && place.geometry.location) {
-          const lat = place.geometry.location.lat();
-          const lng = place.geometry.location.lng();
-          if (!isNaN(lat) && !isNaN(lng)) {
-            setEnd({ lat: lat, lng: lng });
-          } else {
-            console.error("Invalid coordinates");
-          }
-        }
-      });
-    } else {
-      console.error("Google Maps API not available.logged");
     }
   }, []);
 
+  // return
   return (
     <div className="w-full">
-      <label className="text-[1rem] font-semibold mb-3">Enter Pick Up Point</label>
+      <label className="text-[1rem] font-semibold mb-3">
+        Enter Pick Up Point
+      </label>
       <input
+        onBlur={(e) => setOrigin(e.target.value)}
         className="border-2  px-3 rounded-lg h-[50px] w-full focus:!border-blue-500 mb-5"
         placeholder="Enter PickUp Location"
         ref={pickUpInputRef}
       />
-      <label className="text-[1rem] font-semibold mb-3">Enter Drop Off Point</label>
+      <label className="text-[1rem] font-semibold mb-3">
+        Enter Drop Off Point
+      </label>
       <input
+        onBlur={( e ) => setDestination(e.target.value)}
         className="border-2 mb-5 px-3 rounded-lg h-[50px] w-full focus:!border-blue-500"
         placeholder="Enter DropOff Location"
         ref={dropOffInputRef}
       />
-      <Button
-        className="bg-blue-600 text-white w-full"
-        onClick={() => {
-          dispatch(setLocations({ start: start, end: end }));
-        }}
-      >
-        Start Journey
-      </Button>
+       
     </div>
   );
 };

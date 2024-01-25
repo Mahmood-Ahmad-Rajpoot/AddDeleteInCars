@@ -1,5 +1,4 @@
-import React from 'react'
-import DispatchTable from './DispatchTable'
+ import DispatchTable from './DispatchTable'
 
 const DispatchMain = () => {
   return (

@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Main from "../Components/Main";
- import AddCompany from "../Components/settings/AddCompany";
+
+import AddCompany from "../Components/settings/AddCompany";
 import VerifyPhone from "../Pages/VerifyPhone";
- import CalenderPage from "../Pages/CalenderPage";
+import CalenderPage from "../Pages/CalenderPage";
 import CarsPage from "../Pages/CarsPage";
 import CompanyPage from "../Pages/CompanyPage";
 import Settings from "../Pages/Settings";
@@ -10,8 +10,6 @@ import CompanyLogo from "../Pages/CompanyLogo";
 import Dispatch from "../Pages/Dispatch";
 import Reports from "../Pages/Reports";
 import DateAndTime from "../Components/settings/DateAndTime";
-import Cars from "../Components/settings/Cars";
- import LocalReservation from "../Components/Reservation/LocalReservation";
 import HourlyReservationPage from "../Pages/HourlyReservationPage";
 import LocalReservationPage from "../Pages/LocalReservationPage";
 

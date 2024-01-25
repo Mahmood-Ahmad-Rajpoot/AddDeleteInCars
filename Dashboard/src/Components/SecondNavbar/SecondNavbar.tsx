@@ -11,11 +11,10 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setHeader } from "../../features/headerSlice";
 import ReservationDropDown from "./ReservationDropDown";
-import { useState } from "react";
+ 
 const SecondNavbar = () => {
   const dispatch = useDispatch();
-  const [dropDownRoute, setDropDownRoute] = useState('')
-  console.log('Routes:',dropDownRoute);
+ 
   
   const { headerName } = useSelector((store: any) => store.headerSlice);
   const linkStyles = ({ isActive }: any) => {

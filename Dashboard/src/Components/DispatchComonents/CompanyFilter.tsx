@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { dispatchCompanyFilter, resetDispatch } from "../../features/dispatchSlice";
+import { dispatchCompanyFilter } from "../../features/dispatchSlice";
 
 const CompanyFilter = () => {
   const dispatch = useDispatch();

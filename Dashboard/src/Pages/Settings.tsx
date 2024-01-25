@@ -1,7 +1,5 @@
-import React from 'react'
-import Wrapper from '../Components/wrapperComponent/Wrapper'
-import DateAndTime from '../Components/settings/DateAndTime'
-import CompanyLogo from './CompanyLogo'
+ import Wrapper from '../Components/wrapperComponent/Wrapper'
+ import CompanyLogo from './CompanyLogo'
 
 const Settings = () => {
   return (

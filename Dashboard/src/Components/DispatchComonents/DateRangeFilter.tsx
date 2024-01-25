@@ -1,5 +1,5 @@
 import type { Dayjs } from "dayjs";
-import React, { useState } from "react";
+import   { useState } from "react";
 import { DatePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchDateRangeFilter } from "../../features/dispatchSlice";
@@ -14,7 +14,7 @@ const { RangePicker } = DatePicker;
 const DateRangeFilter = ( ) => {
   const dispatch = useDispatch();
   const [dates, setDates] = useState<RangeValue>(null);
-  const [value, setValue] = useState<RangeValue>(null);
+  const [value, __] = useState<RangeValue>(null);
 const {reset} = useSelector((store:any)=>store.dispatchSlice)
   const handleChange = (v: any) => {
     const startDate = { year: v[0].$y, month: v[0].$M + 1, day: v[0].$D };
