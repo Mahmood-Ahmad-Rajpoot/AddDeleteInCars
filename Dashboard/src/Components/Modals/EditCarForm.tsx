@@ -1,10 +1,12 @@
 import { Button, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
-import { setAddCarModal, setEditModal } from "../../features/modalsSlice";
+// import { setAddCarModal, setEditModal } from "../../features/modalsSlice";
 import { useEffect, useState } from "react";
-import { addNewCar, editCar } from "../../features/carsDataSlice";
- import UploadImage from "./UploadImage";
+// import { addNewCar, editCar } from "../../features/carsDataSlice";
+import UploadImage from "./UploadImage";
 import { message } from "antd";
+import { carDataStore } from "../ZuStand/carDataStore";
+import { modalsStore } from "../ZuStand/modalsStore";
 
 interface getProp {
   carData: any;
@@ -20,9 +22,13 @@ const EditCarForm: React.FC<getProp> = ({ carData, whatToDo }) => {
     });
   };
   // states
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [form] = Form.useForm();
   const [image, setUploadedImage] = useState("");
+
+  // zustand
+  const { editCar, addNewCar } = carDataStore((state: any) => state);
+    const { setAddCarModal, setEditCarModal} = modalsStore((state:any)=>state)
 
   // initialValues
   useEffect(() => {
@@ -52,38 +58,58 @@ const EditCarForm: React.FC<getProp> = ({ carData, whatToDo }) => {
   }, [carData]);
 
   const handleCancel = () => {
-    if (whatToDo === "edit") dispatch(setEditModal({}));
-    else dispatch(setAddCarModal());
+     
+    if (whatToDo === "edit"){
+      //  dispatch(setEditModal({}));
+      setEditCarModal({})
+      }
+    else {
+      // dispatch(setAddCarModal())
+      setAddCarModal()
+    
+    };
   };
   // Submission
   const onFinish = (values: any) => {
     if (whatToDo === "edit") {
-      dispatch(setEditModal({}));
-      dispatch(
-        editCar({ car_id: carData.car_id, uploaded_image: image, ...values })
-      );
+      // dispatch(setEditModal({}));
+      setEditCarModal({})
+      // dispatch(
+      //   editCar({ car_id: carData.car_id, uploaded_image: image, ...values })
+      // );
+      editCar({ car_id: carData.car_id, uploaded_image: image, ...values });
       success("Record updated successfully!");
     } else {
-      dispatch(setAddCarModal());
+      // dispatch(setAddCarModal());
+      setAddCarModal()
 
-      dispatch(
-        addNewCar({
-          car_id: Math.round(Math.random() * 1000),
-          car_image: image,
-          ...values,
-        })
-      );
+      addNewCar({
+        car_id: Math.round(Math.random() * 1000),
+        car_image: image,
+        ...values,
+      });
+
       success("Successfully New Car Added!");
     }
   };
   console.log("image:", image);
-const requiredMessage = (text:string) =>(<p className="text-[0.7rem] text-red">{text}</p>)
+  const requiredMessage = (text: string) => (
+    <p className="text-[0.7rem] text-red">{text}</p>
+  );
   return (
     <Form
       form={form}
       name="control-hooks"
       onFinish={onFinish}
-      style={{ maxWidth: "100%",marginBottom:0,paddingBottom:0, color: "grey" ,display:'flex',flexDirection: 'column',justifyContent: 'center'}}
+      style={{
+        maxWidth: "100%",
+        marginBottom: 0,
+        paddingBottom: 0,
+        color: "grey",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
     >
       {" "}
       {contextHolder}
@@ -99,16 +125,16 @@ const requiredMessage = (text:string) =>(<p className="text-[0.7rem] text-red">{
 
           <div className="w-[230px]">
             <label> Car Type</label>
-            <Form.Item  
+            <Form.Item
               rules={[
                 {
                   required: whatToDo === "add" && true,
-                  message: requiredMessage('*Enter a car Type'),
+                  message: requiredMessage("*Enter a car Type"),
                 },
               ]}
               name="car_type"
             >
-              <Input   />
+              <Input />
             </Form.Item>
           </div>
         </div>
@@ -118,7 +144,7 @@ const requiredMessage = (text:string) =>(<p className="text-[0.7rem] text-red">{
             rules={[
               {
                 required: whatToDo === "add" && true,
-                message: requiredMessage('*Enter Luggage capacity'),
+                message: requiredMessage("*Enter Luggage capacity"),
               },
             ]}
             name="hourly_rate"
@@ -164,8 +190,8 @@ const requiredMessage = (text:string) =>(<p className="text-[0.7rem] text-red">{
             className="w-[100px] text-white bg-[grey] hover:!border-[lightgrey] hover:!text-black hover:bg-[lightgrey]"
           >
             Cancel
-          </Button>{" "}
-          <Button
+          </Button>
+          <Button 
             className="w-[auto bg-blue-600 hover:!bg-blue-500"
             type="primary"
             htmlType="submit"

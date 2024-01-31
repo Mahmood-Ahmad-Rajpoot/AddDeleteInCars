@@ -34,7 +34,7 @@ const SecondNavbar = () => {
         >
           <span className="flex gap-1 items-center hover:text-[#117bd8]">
             <AddCircleOutlineIcon className="!w-[1.2rem]" />{" "}
-            <li className={Styles.li1}>Company Logo</li>
+            <li className={Styles.li1}>Forms</li>
           </span>
           <div className={Styles.hov1}></div>
         </NavLink>
@@ -46,7 +46,7 @@ const SecondNavbar = () => {
         >
           <span className="flex gap-1 items-center hover:text-[#117bd8]">
             <MobileFriendlyIcon className="!w-[1.2rem]" />
-            <li className={Styles.li1}>Verify Phone</li>
+            <li className={Styles.li1}>Outside Reservation</li>
           </span>
         </NavLink>
         <NavLink
@@ -70,7 +70,7 @@ const SecondNavbar = () => {
           {" "}
           <span className="flex items-center gap-1 hover:text-[#117bd8]">
             <CalendarMonthIcon className="!w-[1.2rem]" />{" "}
-            <li className={Styles.li1}>Calender</li>
+            <li className={Styles.li1}>ZuStand</li>
           </span>
         </NavLink>
        

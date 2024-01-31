@@ -6,8 +6,7 @@ import CalenderPage from "../Pages/CalenderPage";
 import CarsPage from "../Pages/CarsPage";
 import CompanyPage from "../Pages/CompanyPage";
 import Settings from "../Pages/Settings";
-import CompanyLogo from "../Pages/CompanyLogo";
-import Dispatch from "../Pages/Dispatch";
+ import Dispatch from "../Pages/Dispatch";
 import Reports from "../Pages/Reports";
 import DateAndTime from "../Components/settings/DateAndTime";
 import HourlyReservationPage from "../Pages/HourlyReservationPage";
@@ -24,8 +23,7 @@ const Paths = () => {
         <Route path="Reports" element={<Reports />} />
         <Route path="Cars" element={<CarsPage />} />
         <Route path="Calender" element={<CalenderPage />} />
-        <Route path="CompanyLogo" element={<CompanyLogo />} />
-        <Route path="Settings" element={<Settings />} ></Route>
+          <Route path="Settings" element={<Settings />} ></Route>
         <Route path="DateTime" element={<DateAndTime />} />
         <Route path="Cars" element={<CarsPage />} />
         <Route path="LocalReservation" element={<LocalReservationPage />} />

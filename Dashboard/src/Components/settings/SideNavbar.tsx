@@ -30,7 +30,7 @@ const SideNavbar = () => {
         </NavLink>
         <NavLink className={`${Styles.span1}   flex gap-1`} style={linkStyles} to={"/DateTime"}>
         <span  className="flex gap-1 hover:text-[#117bd8]">
-            <CalendarMonthIcon  className="!w-[1.2rem]"  /> <li className={Styles.li1}>Date & time</li>
+            <CalendarMonthIcon  className="!w-[1.2rem]"  /> <li className={Styles.li1}>Tic-Tac Game</li>
           </span>
         </NavLink>
         

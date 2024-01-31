@@ -1,9 +1,7 @@
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditCalendarIcon from "@mui/icons-material/EditCalendar";
-import { Button } from "antd";
-import { useDispatch } from "react-redux";
-import { setDeleteModal, setEditModal } from "../features/modalsSlice";
 
+import CarDataRenderComponent from "./CarDataRenderComponent";
+
+  
 export const carTableHeader: any = [
   {
     title: "Car Type",
@@ -49,34 +47,19 @@ export const carTableHeader: any = [
   },
   {
     title: "Car Image",
-    // dataIndex: "car_image",
     width: "11%",
     render: (record: any, index: number) => (
       <img
         key={index}
-        // src={record.car_image}
         src={record.car_image}
-        alt={record.car_type} // Add alt attribute for accessibility
-        style={{ maxWidth: "100%", maxHeight: "100%" }} // Optional: Set max width and height
+        alt={record.car_type}  
+        style={{ maxWidth: "100%", maxHeight: "100%" }} 
       />
     ),
   },
   {
     title: "Actions",
-    // dataIndex: "car_image",
     width: "11%",
-    render: (record: any, index: number) => {
-      const dispatch = useDispatch();
-      return (
-        <div key={index} className="flex  ">
-          <Button type="link" onClick={() => dispatch(setDeleteModal(record))}>
-            <DeleteOutlineIcon className="text-red-500  " />
-          </Button>
-          <Button onClick={() => dispatch(setEditModal(record))} type="link">
-            <EditCalendarIcon className="green-red-500" />
-          </Button>
-        </div>
-      );
-    },
+    render: (record: any, index: number) => <CarDataRenderComponent key={index} record={record} />    
   },
 ];

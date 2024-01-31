@@ -1,0 +1,36 @@
+:where(.css-dev-only-do-not-override-zl9ks2).ant-radio-wrapper .ant-radio-inner{
+    width: 25px;
+    height: 25px;
+    border: 2px solid grey;
+    content: url('../../../assets/tick-svgrepo-com.svg');
+    padding-bottom: 2px;
+    font-weight: 700;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-radio-wrapper .ant-radio-checked .ant-radio-inner::after{
+    opacity: 0;
+ 
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+    background-color: orangered;
+    border: 1px solid grey;
+}
+
+
+
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: grey; /* Change thumb color */
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent; /* Change track color */
+  }
+  
+ 
+  

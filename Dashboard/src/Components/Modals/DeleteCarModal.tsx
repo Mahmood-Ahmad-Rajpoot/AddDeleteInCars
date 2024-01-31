@@ -1,7 +1,9 @@
 import { Button, Modal, message } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteCar } from "../../features/carsDataSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import { deleteCar } from "../../features/carsDataSlice";
 import { setDeleteModal } from "../../features/modalsSlice";
+import { carDataStore } from "../ZuStand/carDataStore";
+import { modalsStore } from "../ZuStand/modalsStore";
 const DeleteCarModal = () => {
 // msg
 const [messageApi, contextHolder] = message.useMessage();
@@ -12,19 +14,26 @@ const success = (msg:string) => {
   });
 };
 
-  const dispatch = useDispatch();
-  const { DeleteModal } = useSelector((store: any) => store.modals);
+  // const dispatch = useDispatch();
+  // const { DeleteModal } = useSelector((store: any) => store.modals);
+  const {DeleteModal, setDeleteCarModal} = modalsStore((state:any)=>state)
   const { isDeleteModal, deleteItem } = DeleteModal;
  
+  // zustand 
+  const  {deleteCar} = carDataStore((state:any)=>state)
 
   const handleOk = () => {
-    dispatch(deleteCar(deleteItem))
-    dispatch(setDeleteModal({}));
+    // dispatch(deleteCar(deleteItem))
+    deleteCar(deleteItem.car_id)
+    // dispatch(setDeleteModal({}));
+    setDeleteCarModal({})
     success('car Deleted successfully!')
   };
 
   const handleCancel = () => {
-    dispatch(setDeleteModal({}));
+    // dispatch(setDeleteModal({}));
+    setDeleteCarModal({})
+
   };
   const customFooter=(<div className="flex w-full px-[50px]">
     <Button onClick={handleOk} className="bg-red-500 text-white w-full">Delete</Button>

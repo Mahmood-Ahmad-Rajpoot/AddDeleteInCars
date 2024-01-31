@@ -1,0 +1,20 @@
+:where(.css-dev-only-do-not-override-zl9ks2).ant-picker .ant-picker-suffix {
+  color: orangered;
+  font-size: 20px;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-picker .ant-picker-input {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-select .ant-select-arrow {
+    color: black !important;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-select .ant-select-selection-placeholder{
+    color: black !important;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-btn.ant-btn-sm{
+    background-color:#0293fd;
+}

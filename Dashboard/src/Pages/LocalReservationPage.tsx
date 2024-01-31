@@ -1,10 +1,11 @@
  import Wrapper from '../Components/wrapperComponent/Wrapper'
-import LocalReservation from '../Components/Reservation/LocalReservation'
+ import Reservation from '../Components/Reservation/Reservation'
 
 const LocalReservationPage = () => {
+  const placeHolders={from:'Enter Pick up Location', to:'Enter Drop off Location'}
   return (
     <Wrapper>
-        <LocalReservation/>
+        <Reservation placeHolders={placeHolders} hourlyLocal='local' isShowMap={true} />
     </Wrapper>
 
 

@@ -4,7 +4,9 @@ import Wrapper from "../wrapperComponent/Wrapper"
 const DateAndTime = () => {
   return (
    <Wrapper>
-    <div>DateAndTime</div>
+    <div>
+      <h1>Tic Tac Toe</h1>
+    </div>
    </Wrapper>
   )
 }

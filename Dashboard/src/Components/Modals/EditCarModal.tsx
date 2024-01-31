@@ -1,16 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setEditModal } from "../../features/modalsSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setEditModal } from "../../features/modalsSlice";
 import { Modal } from "antd";
 import EditCarForm from "./EditCarForm";
 import "./Modal.css";
-const EditCarModal = () => {
-  const dispatch = useDispatch();
-  const { EditModal } = useSelector((store: any) => store.modals);
+import { modalsStore } from "../ZuStand/modalsStore";
+
+ const EditCarModal = () => {
+  // const dispatch = useDispatch();
+  // const { EditModal } = useSelector((store: any) => store.modals);
+  const {EditModal, setEditCarModal} = modalsStore((state: any) => state)
   const { isEditModal, editItem } = EditModal;
-  // form
+console.log(EditModal);
+
 
   const handleCancel = () => {
-    dispatch(setEditModal({}));
+    // dispatch(setEditModal({}));
+    setEditCarModal({})
   };
 
   return (
