@@ -1,14 +1,14 @@
- import Wrapper from '../Components/wrapperComponent/Wrapper'
-import Cars from '../Components/settings/Cars'
+import Wrapper from "../Components/wrapperComponent/Wrapper";
+import Cars from "../Components/settings/Cars";
 
 const CarsPage = () => {
   return (
     <div>
-        <Wrapper>
-            <Cars/>
-        </Wrapper>
+      <Wrapper>
+        <Cars />
+      </Wrapper>
     </div>
-  )
-}
+  );
+};
 
-export default CarsPage
+export default CarsPage;

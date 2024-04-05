@@ -38,6 +38,7 @@ const UploadImage: React.FC<getPropImage> = ({
     setImageUrl("");
     setLoading(false)
   }, [image]);
+  
   const handleChange: UploadProps["onChange"] = (
     info: UploadChangeParam<UploadFile>
   ) => {
